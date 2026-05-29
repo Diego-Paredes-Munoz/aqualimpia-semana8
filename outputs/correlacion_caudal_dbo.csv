@@ -1,0 +1,2 @@
+﻿variable_x,variable_y,correlacion_spearman,p_value,interpretacion
+caudal_entrada_m3_d,DBO_salida_mg_L,0.10790376486871793,0.12829280667796483,Relación débil entre caudal_entrada_m3_d y DBO_salida_mg_L.

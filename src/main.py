@@ -4,6 +4,15 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
+from analisis_utils import (
+    preparar_indicadores,
+    calcular_correlacion_spearman,
+    detectar_outliers_zscore,
+    generar_resumen_por_planta,
+    guardar_joblib
+)
+
+
 # Rutas del proyecto
 BASE_DIR = Path(__file__).resolve().parents[1]
 DATA_PATH = BASE_DIR / "data" / "dataset_set_A_aguas_residuales.xlsx"
@@ -188,14 +197,54 @@ def crear_dashboard(df: pd.DataFrame) -> None:
 
 def main() -> None:
     df = cargar_datos(DATA_PATH)
-    df = preparar_datos(df)
+
+    # Funciones externas reutilizables
+    df = preparar_indicadores(df, umbral_eficiencia=85)
+
+    resumen = generar_resumen_por_planta(df)
+
+    correlacion = calcular_correlacion_spearman(
+        df,
+        "caudal_entrada_m3_d",
+        "DBO_salida_mg_L"
+    )
+
+    df_outliers = detectar_outliers_zscore(
+        df,
+        "DBO_salida_mg_L"
+    )
 
     exportar_reportes(df)
     crear_dashboard(df)
 
+    resumen.to_csv(
+        OUTPUT_DIR / "resumen_por_planta_modular.csv",
+        index=False,
+        encoding="utf-8-sig"
+    )
+
+    pd.DataFrame([correlacion]).to_csv(
+        OUTPUT_DIR / "correlacion_caudal_dbo.csv",
+        index=False,
+        encoding="utf-8-sig"
+    )
+
+    df_outliers[df_outliers["outlier_DBO_salida_mg_L"]].to_csv(
+        OUTPUT_DIR / "outliers_dbo_salida.csv",
+        index=False,
+        encoding="utf-8-sig"
+    )
+
+    guardar_joblib(
+        {
+            "resumen_por_planta": resumen,
+            "correlacion_caudal_dbo": correlacion
+        },
+        OUTPUT_DIR / "objetos_analisis.joblib"
+    )
+
     print("Proceso finalizado correctamente.")
     print(f"Archivos generados en: {OUTPUT_DIR}")
-
 
 if __name__ == "__main__":
     main()

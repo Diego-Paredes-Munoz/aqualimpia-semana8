@@ -2,6 +2,12 @@
 
 Proyecto de ciencia de datos aplicado al análisis de plantas de tratamiento de aguas residuales.
 
+## Documentación técnica
+
+La documentación completa del proyecto se encuentra en:
+
+[Ver documentación técnica](docs/documentacion_tecnica.md)
+
 ## Objetivo
 
 Analizar el desempeño operacional y ambiental de distintas plantas de tratamiento, identificando patrones asociados al caudal, DBO de entrada, DBO de salida, eficiencia del proceso y cumplimiento normativo.
