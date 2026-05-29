@@ -1,0 +1,20 @@
+﻿criterio,resultado,detalle
+Total de registros,200,Cantidad total de filas del dataset.
+Valores nulos en fecha_registro,0,Cantidad de registros sin información en la columna.
+Valores nulos en planta,0,Cantidad de registros sin información en la columna.
+Valores nulos en caudal_entrada_m3_d,0,Cantidad de registros sin información en la columna.
+Valores nulos en DBO_entrada_mg_L,0,Cantidad de registros sin información en la columna.
+Valores nulos en SST_entrada_mg_L,0,Cantidad de registros sin información en la columna.
+Valores nulos en pH_entrada,0,Cantidad de registros sin información en la columna.
+Valores nulos en energia_aeracion_kWh,0,Cantidad de registros sin información en la columna.
+Valores nulos en lodos_generados_kg_d,0,Cantidad de registros sin información en la columna.
+Valores nulos en DBO_salida_mg_L,0,Cantidad de registros sin información en la columna.
+Valores nulos en cumplimiento_norma,0,Cantidad de registros sin información en la columna.
+Registros duplicados,0,Cantidad de filas completamente repetidas.
+Valores negativos en caudal_entrada_m3_d,0,Cantidad de valores físicamente inválidos para el proceso.
+Valores negativos en DBO_entrada_mg_L,0,Cantidad de valores físicamente inválidos para el proceso.
+Valores negativos en DBO_salida_mg_L,0,Cantidad de valores físicamente inválidos para el proceso.
+Valores negativos en energia_aeracion_kWh,0,Cantidad de valores físicamente inválidos para el proceso.
+Valores negativos en lodos_generados_kg_d,0,Cantidad de valores físicamente inválidos para el proceso.
+DBO salida mayor que DBO entrada,0,Registros donde la eficiencia del tratamiento sería negativa.
+Valores inválidos en cumplimiento_norma,0,Registros con valores distintos de 0 o 1.

@@ -9,7 +9,8 @@ from analisis_utils import (
     calcular_correlacion_spearman,
     detectar_outliers_zscore,
     generar_resumen_por_planta,
-    guardar_joblib
+    guardar_joblib,
+    evaluar_calidad_datos
 )
 
 
@@ -197,6 +198,14 @@ def crear_dashboard(df: pd.DataFrame) -> None:
 
 def main() -> None:
     df = cargar_datos(DATA_PATH)
+    
+    reporte_calidad = evaluar_calidad_datos(df)
+
+    reporte_calidad.to_csv(
+    OUTPUT_DIR / "reporte_calidad_datos.csv",
+    index=False,
+    encoding="utf-8-sig"
+    )
 
     # Funciones externas reutilizables
     df = preparar_indicadores(df, umbral_eficiencia=85)
